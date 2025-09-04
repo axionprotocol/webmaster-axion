@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axion Protocol | Official Whitepaper</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+        }
+        .orbitron {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.05em; /* Added for better readability */
+        }
+        .cosmic-background {
+            background-color: #090a0f;
+            background-image: radial-gradient(ellipse at center, #1b2735 0%, #090a0f 100%);
+        }
+        
+        /* --- Logo and Animation Styles from LOGO.htm --- */
+        @keyframes pulse-prism {
+            0%, 100% {
+                transform: scale(0.98);
+                filter: drop-shadow(0 0 5px #aaccff);
+            }
+            50% {
+                transform: scale(1.02);
+                filter: drop-shadow(0 0 15px #ffffff);
+            }
+        }
+        #world-prism-group {
+            transform-origin: 50% 50%;
+            animation: pulse-prism 5s ease-in-out infinite;
+        }
+        
+        /* Language Switcher Styles */
+        .lang-btn {
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .lang-btn.active {
+            background-color: #4f46e5;
+            color: white;
+        }
+
+        /* --- Updated Whitepaper Content Styles --- */
+        .whitepaper-content h2 {
+            font-family: 'Sarabun', sans-serif; /* Changed for readability */
+            font-weight: 700; /* Make it bold */
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            text-shadow: 0 0 10px rgba(100, 150, 255, 0.5);
+        }
+        .whitepaper-content h3 {
+            font-family: 'Sarabun', sans-serif; /* Changed for readability */
+            font-weight: 700; /* Make it bold */
+            font-size: 1.75rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #3b82f6;
+            padding-bottom: 0.5rem;
+        }
+        .whitepaper-content h4 {
+            font-family: 'Sarabun', sans-serif; /* Changed for readability */
+            font-weight: 700; /* Make it bold */
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .whitepaper-content ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+         .whitepaper-content li {
+            margin-bottom: 0.5rem;
+        }
+        .whitepaper-content p, .whitepaper-content li {
+            line-height: 1.8; /* Increased for better spacing */
+        }
+    </style>
+</head>
+<body class="cosmic-background text-gray-200">
+
+    <div class="min-h-screen flex flex-col items-center p-4 sm:p-6 md:p-8">
+        
+        <!-- NEW Animated Logo -->
+        <div class="w-64 h-64 sm:w-80 sm:h-80 mb-4">
+             <svg viewBox="0 0 100 100">
+                <!-- Background Glow -->
+                <defs>
+                    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                        <stop offset="0%" style="stop-color: rgba(0, 150, 255, 0.2);" />
+                        <stop offset="100%" style="stop-color: rgba(0, 150, 255, 0);" />
+                    </radialGradient>
+
+                    <!-- Motion Paths for Nodes -->
+                    <path id="path1" d="M 98 50 A 48 18 0 1 1 2 50 A 48 18 0 1 1 98 50" fill="none"/>
+                    <path id="path2" d="M 50 98 A 18 48 0 1 1 50 2 A 18 48 0 1 1 50 98" fill="none"/>
+                    <path id="path3" d="M 95 50 A 45 25 0 1 1 5 50 A 45 25 0 1 1 95 50" fill="none"/>
+
+                </defs>
+                <circle cx="50" cy="50" r="50" fill="url(#bgGlow)" />
+
+                <!-- Stationary Orbits -->
+                <ellipse cx="50" cy="50" rx="48" ry="18" fill="none" stroke="#ff00e6" stroke-width="0.75" stroke-dasharray="4 2" />
+                <ellipse cx="50" cy="50" rx="18" ry="48" fill="none" stroke="#9933ff" stroke-width="0.75" stroke-dasharray="4 2" />
+                <ellipse cx="50" cy="50" rx="45" ry="25" fill="none" stroke="#ffd700" stroke-width="0.5" stroke-dasharray="2 3" transform="rotate(45 50 50)" />
+                <ellipse cx="50" cy="50" rx="45" ry="25" fill="none" stroke="#00f2ea" stroke-width="0.5" stroke-dasharray="2 3" transform="rotate(-45 50 50)" />
+
+                <!-- The NEW World Prism Core 💠 -->
+                <g id="world-prism-group">
+                    <linearGradient id="prismFacet1" x1="0.5" y1="0" x2="0.5" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#d0d0ff"/></linearGradient>
+                    <linearGradient id="prismFacet2" x1="1" y1="0.5" x2="0" y2="0.5"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#b0b0ff"/></linearGradient>
+                    <linearGradient id="prismFacet3" x1="0.5" y1="1" x2="0.5" y2="0"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#9090ff"/></linearGradient>
+                    <linearGradient id="prismFacet4" x1="0" y1="0.5" x2="1" y2="0.5"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#7070ff"/></linearGradient>
+                    
+                    <polygon points="50,32 68,50 50,50" fill="url(#prismFacet2)" />
+                    <polygon points="50,68 68,50 50,50" fill="url(#prismFacet3)" />
+                    <polygon points="50,68 32,50 50,50" fill="url(#prismFacet4)" />
+                    <polygon points="50,32 32,50 50,50" fill="url(#prismFacet1)" />
+                    
+                    <circle cx="50" cy="50" r="5" fill="#ffffff" opacity="0.5" filter="url('data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'blur\'><feGaussianBlur stdDeviation=\'3\'/></filter></svg>#blur')"/>
+                </g>
+
+                <!-- Animated Guardian Nodes -->
+                <circle r="3" fill="#ff00e6">
+                    <animateMotion dur="20s" repeatCount="indefinite" rotate="auto">
+                        <mpath xlink:href="#path1"/>
+                    </animateMotion>
+                </circle>
+                <circle r="2.5" fill="#9933ff">
+                     <animateMotion dur="25s" repeatCount="indefinite" rotate="auto">
+                        <mpath xlink:href="#path2"/>
+                    </animateMotion>
+                </circle>
+                <g transform="rotate(45 50 50)">
+                    <circle r="2" fill="#ffd700">
+                        <animateMotion dur="30s" repeatCount="indefinite" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
+                             <mpath xlink:href="#path3"/>
+                        </animateMotion>
+                    </circle>
+                </g>
+                <g transform="rotate(-45 50 50)">
+                     <circle r="2.2" fill="#00f2ea">
+                        <animateMotion dur="35s" repeatCount="indefinite" rotate="auto" keyPoints="1;0" keyTimes="0;1" calcMode="linear">
+                             <mpath xlink:href="#path3"/>
+                        </animateMotion>
+                    </circle>
+                </g>
+            </svg>
+        </div>
+        
+        <h1 class="orbitron text-4xl sm:text-5xl font-bold text-white text-center" style="text-shadow: 0 0 15px #60a5fa;">
+            AXION PROTOCOL
+        </h1>
+        <p class="text-center text-blue-300 mt-2 mb-6 text-lg sm:text-xl">
+            The Decentralized Compute Layer for the AI & Space Era
+        </p>
+        
+        <!-- Language Switcher -->
+        <div class="bg-gray-900/50 rounded-lg p-1 flex items-center space-x-1 mb-8 border border-gray-700">
+            <button id="btn-th" onclick="switchLang('th')" class="lang-btn active px-4 py-2 rounded-md font-bold">ไทย</button>
+            <button id="btn-en" onclick="switchLang('en')" class="lang-btn px-4 py-2 rounded-md font-bold">English</button>
+        </div>
+
+        <!-- Whitepaper Content Area -->
+        <main class="bg-gray-900/50 p-6 sm:p-10 rounded-lg max-w-4xl w-full border border-gray-700 whitepaper-content">
+            
+            <!-- Thai Content -->
+            <div id="content-th">
+                <h2>Axion Protocol: Whitepaper ฉบับสมบูรณ์</h2>
+                <p class="text-xl text-blue-300 mb-2">เครือข่ายประมวลผลแบบกระจายศูนย์สำหรับยุค AI และอวกาศ</p>
+                <p class="text-sm text-gray-400 mb-6">เวอร์ชัน: 1.0 | สถานะ: สมบูรณ์</p>
+                
+                <h3>บทคัดย่อ (Abstract)</h3>
+                <p>Axion Protocol คือบล็อกเชนเลเยอร์ 1 ที่ถูกออกแบบมาเพื่อแก้ไขปัญหาการรวมศูนย์ของทรัพยากรการประมวลผลและปัญญาประดิษฐ์ (AI) ในปัจจุบัน โดยนำเสนอสถาปัตยกรรมแบบ Modular ที่ยืดหยุ่น, กลไกฉันทามติที่เป็นเอกลักษณ์ "Proof-of-Render" (PoR), และโมเดลเศรษฐศาสตร์โทเคนแบบปรับตัวได้ (Adaptive Tokenomics) ที่กำกับดูแลโดย Axion DAO หัวใจของระบบนิเวศคือตลาดกลางให้เช่าทรัพยากรคอมพิวเตอร์แบบกระจายศูนย์ ซึ่งทำหน้าที่เป็นโครงสร้างพื้นฐานสากล (Universal Infrastructure) ที่ไร้การอนุญาตสำหรับแอปพลิเคชันยุคใหม่ทุกรูปแบบ ตั้งแต่ Decentralized AI (DeAI) ไปจนถึงเว็บโฮสติ้งที่ต้านทานการเซ็นเซอร์ วิสัยทัศน์สูงสุดของ Axion คือการสร้างเครือข่ายที่มีความต้านทานต่อการเซ็นเซอร์อย่างสมบูรณ์ ผ่านการบรรลุการกระจายอำนาจทางกายภาพขั้นสูงสุดด้วยการส่งโหนดผู้พิทักษ์ (Guardian Node) ขึ้นสู่วงโคจรนอกโลก</p>
+                
+                <h3>1. บทนำ: สู่ยุคใหม่ของการประมวลผลแบบกระจายศูนย์</h3>
+                <p>ในทศวรรษที่ผ่านมา โลกได้เห็นการเติบโตอย่างก้าวกระโดดของเทคโนโลยีปัญญาประดิษฐ์ (AI) และความต้องการพลังการประมวลผลที่เพิ่มขึ้นอย่างมหาศาล อย่างไรก็ตาม ทรัพยากรที่สำคัญเหล่านี้กลับกระจุกตัวอยู่ภายใต้การควบคุมของบริษัทเทคโนโลยียักษ์ใหญ่เพียงไม่กี่แห่ง การรวมศูนย์นี้นำมาซึ่งปัญหาสำคัญหลายประการ:</p>
+                <ul>
+                    <li><b>จุดเปราะบาง (Single Point of Failure):</b> การพึ่งพาผู้ให้บริการเพียงไม่กี่รายสร้างความเสี่ยงต่อระบบทั้งหมด</li>
+                    <li><b>การเซ็นเซอร์และการควบคุม:</b> ผู้ให้บริการสามารถจำกัดการเข้าถึงหรือปิดกั้นนวัตกรรมที่ไม่สอดคล้องกับผลประโยชน์ของตน</li>
+                    <li><b>ต้นทุนที่สูง:</b> การผูกขาดทำให้ค่าใช้จ่ายในการเข้าถึงพลังประมวลผลสูงเกินความจำเป็น</li>
+                    <li><b>ความเป็นส่วนตัวของข้อมูล:</b> ผู้ใช้ต้องมอบข้อมูลที่ละเอียดอ่อนให้กับหน่วยงานกลางเพื่อใช้ในการฝึกสอน AI</li>
+                </ul>
+                <p>Axion Protocol ถูกสร้างขึ้นเพื่อทลายกำแพงเหล่านี้ โดยนำเสนอทางเลือกใหม่: เครือข่ายประมวลผลแบบเปิดกว้าง เป็นกลาง และเป็นเจ้าของโดยผู้ใช้งานเอง</p>
+
+                <h3>2. สถาปัตยกรรมหลัก: แนวทางแบบ Modular (แยกส่วน)</h3>
+                <p>เพื่อหลีกเลี่ยงข้อจำกัดด้านการขยายขนาดของบล็อกเชนแบบ Monolithic, Axion จึงถูกออกแบบบนสถาปัตยกรรมแบบ Modular ซึ่งแยกหน้าที่หลักของบล็อกเชนออกจากกันเพื่อให้แต่ละส่วนทำงานได้อย่างเต็มประสิทธิภาพ:</p>
+                <h4>2.1. Execution Layer (ชั้นประมวลผล)</h4>
+                <p>เป็นสภาพแวดล้อมสำหรับการรัน Smart Contract และตรรกะของ dApps ผู้พัฒนาสามารถสร้าง Execution Layer ของตนเองที่ปรับแต่งให้เหมาะกับกรณีการใช้งานเฉพาะทาง เช่น การอนุมาน AI (AI Inference) ที่ต้องการความเร็วสูง หรือการฝึกสอนโมเดล (AI Training) ที่ต้องการพลังประมวลผลมหาศาล</p>
+                <h4>2.2. Data Availability Layer (ชั้นความพร้อมใช้ของข้อมูล)</h4>
+                <p>ทำหน้าที่รับประกันว่าข้อมูล "ทั้งหมด" ของธุรกรรมที่ประมวลผลใน Execution Layer ได้ถูกเผยแพร่และพร้อมให้ทุกคนสามารถตรวจสอบได้ สิ่งนี้ป้องกันไม่ให้ผู้สร้างบล็อกซ่อนข้อมูลและสร้างสถานะที่ไม่ถูกต้อง</p>
+                <h4>2.3. Consensus Layer (ชั้นฉันทามติ)</h4>
+                <p>เป็นหัวใจด้านความปลอดภัยของ Axion ทำหน้าที่จัดลำดับธุรกรรมที่มาจาก Execution Layer ต่างๆ โดยใช้กลไกฉันทามติ Proof-of-Render ที่เป็นเอกลักษณ์ของเรา</p>
+                <h4>2.4. Settlement Layer (ชั้นสรุปธุรกรรม)</h4>
+                <p>เป็นชั้นรากฐานที่ทำหน้าที่เป็น "ศาลสูงสุด" สำหรับยืนยันสถานะสุดท้ายของธุรกรรม, แก้ไขข้อพิพาทที่อาจเกิดขึ้นระหว่าง Execution Layer ต่างๆ และเป็นที่เก็บสินทรัพย์หลักของระบบนิเวศอย่างปลอดภัย</p>
+                
+                <h3>3. กลไกฉันทามติ: Proof-of-Render (PoR)</h3>
+                <p>PoR คืออัลกอริทึมที่ออกแบบมาเพื่อพิสูจน์ว่าผู้เข้าร่วมเครือข่ายได้สละทรัพยากรคอมพิวเตอร์ที่จับต้องได้จริง (CPU, RAM, DISK, GPU) ในการรักษาความปลอดภัยของเครือข่าย</p>
+                <h4>3.1. ปรัชญาการออกแบบ</h4>
+                <p>PoR ถูกสร้างขึ้นเพื่อต้านทานการใช้ฮาร์ดแวร์เฉพาะทาง (ASIC) โดยบังคับให้กระบวนการค้นหาคำตอบต้องใช้ทรัพยากรหลายประเภทพร้อมกัน โดยเฉพาะหน่วยความจำ (RAM) และหน่วยประมวลผลกราฟิก (GPU) ซึ่งเป็นทรัพยากรหลักที่จำเป็นสำหรับงานด้าน AI</p>
+                <h4>3.2. กระบวนการ 5 ขั้นตอน</h4>
+                <ul>
+                    <li><b>รวบรวมวัตถุดิบ:</b> Renderer เลือกธุรกรรม, สร้าง Merkle Root, และรวบรวมข้อมูล Header พื้นฐาน</li>
+                    <li><b>จัดฉาก:</b> สร้าง Candidate Block Header ขึ้นมาโดยมี Nonce เป็นตัวแปรสำหรับการแข่งขัน</li>
+                    <li><b>เตรียมเวที:</b> ใช้ CPU และ RAM สร้าง "Dataset" ขนาดใหญ่ (หลาย Gigabyte) ขึ้นมาในหน่วยความจำ ซึ่งมีรากฐานมาจากข้อมูลใน Header การสร้าง Dataset นี้ทำให้ผู้ที่ไม่มี RAM เพียงพอไม่สามารถเข้าร่วมการแข่งขันได้</li>
+                    <li><b>เรนเดอร์ตัวพิสูจน์:</b> (การแข่งขันหลัก) ใช้ GPU ในการอ่านข้อมูลแบบสุ่มจาก Dataset ใน RAM และทำการประมวลผลการเข้ารหัสที่ซับซ้อนซ้ำๆ โดยเปลี่ยนค่า Nonce ไปเรื่อยๆ จนกว่าจะเจอผลลัพธ์ที่ตรงตามเป้าหมายความยากของเครือข่าย</li>
+                    <li><b>ผนึก:</b> ผู้ชนะจะประกาศบล็อกที่สมบูรณ์พร้อม "Dimensional Proof" (ซึ่งก็คือ Nonce ที่ถูกต้อง) ให้โหนดอื่นในเครือข่ายตรวจสอบ ซึ่งสามารถทำได้อย่างรวดเร็ว</li>
+                </ul>
+
+                <h3>4. เศรษฐศาสตร์โทเคน (Tokenomics): โมเดลแบบปรับตัวได้</h3>
+                <p>Axion ปฏิเสธแนวคิดนโยบายการเงินที่ตายตัว แต่ใช้โมเดลที่ยืดหยุ่นซึ่งกำกับดูแลโดย Axion DAO เพื่อให้เศรษฐกิจของโปรโตคอลสามารถปรับตัวเข้ากับสภาวะของเครือข่ายที่เปลี่ยนแปลงไปได้</p>
+                <h4>4.1. โทเคน AXION</h4>
+                <p>เป็นสินทรัพย์หลักของโปรโตคอล มีหน้าที่ดังนี้:</p>
+                <ul>
+                    <li><b>ค่าธรรมเนียม (Gas Fee):</b> ใช้ในการชำระค่าธุรกรรมและค่ารัน Smart Contract</li>
+                    <li><b>การค้ำประกัน (Staking):</b> ใช้ในการวางเป็นหลักประกันสำหรับ Stable Nodes และผู้ให้บริการทรัพยากร</li>
+                    <li><b>หน่วยกลางในการแลกเปลี่ยน:</b> ใช้เป็นสื่อกลางในการชำระค่าเช่าทรัพยากรในตลาด</li>
+                    <li><b>สิทธิ์ในการกำกับดูแล:</b> ใช้ในการลงมติข้อเสนอต่างๆ ของ Axion DAO</li>
+                </ul>
+                <h4>4.2. กลไก Adaptive</h4>
+                <p>DAO สามารถวัด "สุขภาพ" ของเครือข่ายผ่าน "Sensors" (เช่น TotalRenderPower, TotalFeesGenerated) และปรับนโยบายการเงินผ่าน "Levers" (เช่น BaseEmissionRate, RewardSplitRatio, FeeBurnPercentage) เพื่อรักษาสมดุลระหว่างการให้รางวัล, ความปลอดภัย, และการสร้างมูลค่าให้กับโทเคนในระยะยาว</p>
+                
+                <h3>5. เหนือกว่า AI: Axion ในฐานะ Universal Decentralized Compute Layer</h3>
+                <p>แม้ว่า Decentralized AI จะเป็นแอปพลิเคชันเรือธง (Flagship Application) ที่แสดงศักยภาพของ Axion ได้อย่างสมบูรณ์แบบที่สุด แต่สิ่งสำคัญคือต้องเข้าใจว่า AI เป็นเพียงกรณีการใช้งานแรก ไม่ใช่กรณีการใช้งานเดียว</p>
+                <p>แก่นแท้ของผลิตภัณฑ์ที่เรากำลังสร้างคือ "ตลาดกลางทรัพยากรการประมวลผลแบบกระจายศูนย์" (Decentralized Compute Marketplace) ซึ่งเปรียบเสมือน "Axion Cloud" หรือ "Amazon Web Services (AWS) เวอร์ชันกระจายศูนย์" ที่เป็นกลางและเปิดกว้างสำหรับทุกคน DApp ใดๆ ก็ตามที่สร้างบน Axion จะสามารถเรียกใช้ทรัพยากรพื้นฐาน (CPU, GPU, RAM, DISK) จากตลาดกลางนี้เพื่อให้บริการได้หลากหลายรูปแบบอย่างไม่มีที่สิ้นสุด เช่น เว็บโฮสติ้งที่ต้านทานการเซ็นเซอร์, คลาวด์สตอเรจ, การประมวลผลทางวิทยาศาสตร์, และอื่นๆ อีกมากมาย</p>
+                <p>วิสัยทัศน์ที่กว้างขึ้นนี้ได้สร้าง วงล้อเศรษฐกิจที่สมบูรณ์ (Economic Flywheel) ที่แข็งแกร่ง และยกระดับอรรถประโยชน์ของเหรียญ AXION ให้กลายเป็น "สกุลเงินกลางสำหรับทุกกิจกรรมการประมวลผลแบบดิจิทัล"</p>
+
+                <h3>6. การรักษาความปลอดภัยและการกำกับดูแล</h3>
+                <h4>6.1. การป้องกัน "Internal Resource Attack"</h4>
+                <p>เพื่อป้องกันการใช้ตลาดในทางที่ผิด เราได้ออกแบบระบบป้องกันหลายชั้น เช่น การบังคับให้ผู้ให้บริการต้องวาง Stake ซึ่งจะถูกริบ (Slash) หากทรัพยากรของตนถูกใช้ในการโจมตี, และการใช้กลไกราคาเช่าแบบไดนามิกเพื่อทำให้การระดมเช่าทรัพยากรจำนวนมากมีค่าใช้จ่ายสูงจนไม่คุ้มค่า</p>
+                <h4>6.2. Axion DAO</h4>
+                <p>เครือข่าย Axion จะถูกกำกับดูแลโดยองค์กรอัตโนมัติแบบกระจายศูนย์ (DAO) ซึ่งผู้ถือโทเคน AXION ทุกคนคือผู้มีส่วนได้ส่วนเสีย DAO จะมีอำนาจในการตัดสินใจทิศทางของโปรโตคอล, บริหารจัดการคลัง (Treasury), และที่สำคัญที่สุดคือการควบคุม "คันโยก" ของ Adaptive Tokenomics</p>
+
+                <h3>7. แผนการพัฒนาและวิสัยทัศน์แห่งอนาคต (Roadmap & Future Vision)</h3>
+                <ul>
+                    <li><b>Phase 1: Testnet & Community Building:</b> เปิดตัวเครือข่ายทดสอบ, สร้างชุมชนยุคแรก, และดำเนินการ Audit ความปลอดภัย</li>
+                    <li><b>Phase 2: Mainnet "Monolithic" Launch:</b> เปิดตัวเครือข่ายหลักในเวอร์ชันที่สมบูรณ์แต่ยังไม่แยกส่วน เพื่อพิสูจน์ความเสถียรของ PoR และโมเดลเศรษฐกิจ</li>
+                    <li><b>Phase 3: Modular Transition:</b> เริ่มดำเนินการตามแผนการแยก Layer ต่างๆ เพื่อเพิ่มประสิทธิภาพและการขยายขนาด</li>
+                    <li><b>Phase 4: Guardian Node in Space:</b> ภารกิจสูงสุดในการส่งโหนดผู้พิทักษ์ขึ้นสู่วงโคจรเพื่อบรรลุการกระจายอำนาจขั้นสูงสุดและสร้างเครือข่ายที่ต้านทานการเซ็นเซอร์ได้อย่างแท้จริง</li>
+                </ul>
+
+                <h3>8. บทสรุป</h3>
+                <p>Axion Protocol ไม่ใช่แค่การสร้างบล็อกเชนอีกหนึ่งตัว แต่คือความพยายามในการสร้างโครงสร้างพื้นฐานดิจิทัลสำหรับอนาคตที่เปิดกว้างและยุติธรรม เราขอเชิญชวนนักพัฒนา, นักวิจัย, ผู้ให้บริการทรัพยากร, และผู้ที่มีความเชื่อในวิสัยทัศน์เดียวกัน มาร่วมเป็นส่วนหนึ่งของการเดินทางครั้งนี้เพื่อสร้างเครือข่ายการประมวลผลสำหรับคนรุ่นต่อไป</p>
+            </div>
+
+            <!-- English Content -->
+            <div id="content-en" hidden>
+                <h2>Axion Protocol: The Complete Whitepaper</h2>
+                <p class="text-xl text-blue-300 mb-2">A Decentralized Compute Network for the AI & Space Era</p>
+                <p class="text-sm text-gray-400 mb-6">Version: 1.0 | Status: Complete</p>
+
+                <h3>Abstract</h3>
+                <p>Axion Protocol is a Layer 1 blockchain designed to address the centralization of computational resources and artificial intelligence (AI). It introduces a flexible Modular Architecture, a unique "Proof-of-Render" (PoR) consensus mechanism, and an Adaptive Tokenomics model governed by the Axion DAO. At the heart of the ecosystem is a decentralized marketplace for computing resources, serving as a permissionless, universal infrastructure for all next-generation applications, from Decentralized AI (DeAI) to censorship-resistant web hosting. The ultimate vision of Axion is to create a fully censorship-resistant network by achieving the highest degree of physical decentralization: launching a Guardian Node into Earth's orbit.</p>
+
+                <h3>1. Introduction: A New Era of Decentralized Computation</h3>
+                <p>The last decade has witnessed the exponential growth of artificial intelligence and an insatiable demand for computational power. However, these critical resources are concentrated in the hands of a few tech giants. This centralization poses significant risks:</p>
+                <ul>
+                    <li><b>Single Points of Failure:</b> Reliance on a few providers creates systemic risk.</li>
+                    <li><b>Censorship and Control:</b> Providers can restrict access or stifle innovation that doesn't align with their interests.</li>
+                    <li><b>High Costs:</b> Monopolies lead to unnecessarily high prices for compute resources.</li>
+                    <li><b>Data Privacy:</b> Users must entrust sensitive data to central entities for AI training.</li>
+                </ul>
+                <p>Axion Protocol was created to break down these barriers, offering a new paradigm: a compute network that is open, neutral, and owned by its users.</p>
+
+                <h3>2. Core Architecture: The Modular Approach</h3>
+                <p>To avoid the scalability bottlenecks of monolithic blockchains, Axion is built on a modular architecture, separating the core functions of a blockchain to allow each layer to specialize and perform optimally:</p>
+                <h4>2.1. Execution Layer</h4>
+                <p>This is the environment where smart contracts and dApp logic run. Developers can create specialized Execution Layers tailored to specific use cases, such as high-speed AI inference or resource-intensive AI model training.</p>
+                <h4>2.2. Data Availability Layer</h4>
+                <p>This layer guarantees that all transaction data processed on Execution Layers has been published and is available for anyone to inspect. This prevents block producers from hiding data and creating invalid state transitions.</p>
+                <h4>2.3. Consensus Layer</h4>
+                <p>The security heart of Axion. This layer is responsible for ordering transactions from various Execution Layers using our unique Proof-of-Render consensus mechanism.</p>
+                <h4>2.4. Settlement Layer</h4>
+                <p>The foundational layer that acts as the ultimate "court of law" for verifying final transaction states, resolving disputes between Execution Layers, and securing the ecosystem's core assets.</p>
+
+                <h3>3. Consensus Mechanism: Proof-of-Render (PoR)</h3>
+                <p>PoR is an algorithm designed to prove that network participants have expended real-world computational resources (CPU, RAM, DISK, GPU) to secure the network.</p>
+                <h4>3.1. Design Philosophy</h4>
+                <p>PoR is designed to be ASIC-resistant by requiring the puzzle-solving process to utilize multiple resource types simultaneously, with a strong emphasis on memory (RAM) and graphical processing units (GPU), the primary resources for AI workloads.</p>
+                <h4>3.2. The 5-Step Process</h4>
+                <ul>
+                    <li><b>Collect Materials:</b> A Renderer selects transactions, builds a Merkle Root, and gathers basic header data.</li>
+                    <li><b>Stage the Scene:</b> A candidate block header is constructed, with the Nonce as the variable for the competition.</li>
+                    <li><b>Prepare the Stage:</b> Using the CPU and RAM, a large (multi-gigabyte) "Dataset" is generated in memory, seeded by the header data. This memory-hardness prevents participants without sufficient RAM from competing.</li>
+                    <li><b>Render the Proof:</b> (The main competition) The GPU is used to perform rapid, pseudorandom reads from the in-memory Dataset and execute complex cryptographic computations, iterating through Nonce values until a valid result is found that meets the network's difficulty target.</li>
+                    <li><b>Seal:</b> The winner broadcasts the complete block with the "Dimensional Proof" (the correct Nonce), which can be verified almost instantly by other nodes.</li>
+                </ul>
+
+                <h3>4. Tokenomics: The Adaptive Model</h3>
+                <p>Axion rejects a fixed monetary policy, instead opting for a flexible model governed by the Axion DAO. This allows the protocol's economy to adapt to changing network conditions.</p>
+                <h4>4.1. The AXION Token</h4>
+                <p>The native asset of the protocol, serving several key functions:</p>
+                <ul>
+                    <li><b>Gas Fees:</b> Used to pay for transactions and smart contract execution.</li>
+                    <li><b>Staking:</b> Used as collateral for Stable Nodes and resource providers.</li>
+                    <li><b>Unit of Exchange:</b> The medium of payment for renting resources in the marketplace.</li>
+                    <li><b>Governance Rights:</b> Used to vote on proposals within the Axion DAO.</li>
+                </ul>
+                <h4>4.2. The Adaptive Mechanism</h4>
+                <p>The DAO can measure network "health" via on-chain "Sensors" (e.g., TotalRenderPower, TotalFeesGenerated) and adjust monetary policy via "Levers" (e.g., BaseEmissionRate, RewardSplitRatio, FeeBurnPercentage) to maintain a healthy balance between rewards, security, and long-term token value.</p>
+                
+                <h3>5. Beyond AI: Axion as a Universal Decentralized Compute Layer</h3>
+                <p>While Decentralized AI is the flagship application that perfectly showcases Axion's capabilities, it is crucial to understand that AI is the first use case, not the only one.</p>
+                <p>The core product being built is a "Decentralized Compute Marketplace." This is effectively "Axion Cloud" — a neutral, open, and decentralized version of Amazon Web Services (AWS). Any dApp built on Axion can tap into the underlying resources (CPU, GPU, RAM, DISK) from this marketplace to offer an infinite variety of services, such as censorship-resistant web hosting, cloud storage, scientific computing, and more.</p>
+                <p>This broader vision creates a powerful Economic Flywheel and elevates the utility of the AXION token to become the "currency for all digital computation."</p>
+
+                <h3>6. Security and Governance</h3>
+                <h4>6.1. "Internal Resource Attack" Prevention</h4>
+                <p>To prevent misuse of the marketplace, we employ layered defenses, such as requiring providers to stake collateral that can be "slashed" if their resources are used in an attack, and dynamic pricing to make large-scale resource acquisition prohibitively expensive.</p>
+                <h4>6.2. The Axion DAO</h4>
+                <p>The Axion network is governed by a Decentralized Autonomous Organization (DAO), where all AXION token holders are stakeholders. The DAO has the power to direct the protocol's future, manage the treasury, and, most importantly, control the "levers" of the Adaptive Tokenomics.</p>
+
+                <h3>7. Roadmap & Future Vision</h3>
+                <ul>
+                    <li><b>Phase 1: Testnet & Community Building:</b> Launching the test network, fostering an early community, and conducting security audits.</li>
+                    <li><b>Phase 2: Mainnet "Monolithic" Launch:</b> A complete, non-modular mainnet launch to prove the stability of PoR and the economic model.</li>
+                    <li><b>Phase 3: Modular Transition:</b> Executing the planned transition to a full modular architecture for scalability.</li>
+                    <li><b>Phase 4: Guardian Node in Space:</b> The ultimate mission to launch a guardian node into orbit, achieving maximum decentralization and creating a truly unstoppable network.</li>
+                </ul>
+
+                <h3>8. Conclusion</h3>
+                <p>Axion Protocol is not just another blockchain; it is an endeavor to build the digital infrastructure for a more open and equitable future. We invite developers, researchers, resource providers, and fellow visionaries to join us on this journey to build the compute network for the next generation.</p>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        function switchLang(lang) {
+            const thContent = document.getElementById('content-th');
+            const enContent = document.getElementById('content-en');
+            const thBtn = document.getElementById('btn-th');
+            const enBtn = document.getElementById('btn-en');
+
+            if (lang === 'th') {
+                thContent.hidden = false;
+                enContent.hidden = true;
+                thBtn.classList.add('active');
+                enBtn.classList.remove('active');
+            } else {
+                thContent.hidden = true;
+                enContent.hidden = false;
+                thBtn.classList.remove('active');
+                enBtn.classList.add('active');
+            }
+        }
+    </script>
+
+</body>
+</html>
+
